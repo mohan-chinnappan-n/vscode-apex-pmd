@@ -1,0 +1,27 @@
+{
+    "vim.disableAnnoyingNeovimMessage": true,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "window.zoomLevel": 1,
+
+    // absolute path to where PMD was installed
+    
+    "apexPMD.pmdPath":"/Users/mchinnappan/code-scan-tools/pmd/pmd-bin-5.8.1",
+    // Set to false to use you own ruleset (set path)
+     "apexPMD.useDefaultRuleset": "true",
+
+     // Absolute path to ruleset xml file.  Must also set `useDefaultRuleset:false`.
+    "apexPMD.rulesetPath": "",
+    
+        // Will run static analysis every time a file is opened
+        "apexPMD.runOnFileOpen": "true",
+    
+        // Will run static analysis every time a file is saved
+        "apexPMD.runOnFileSave": "true",
+    
+        // Determines at what priority level 'errors' will be added. Anything less will be a warning or hint
+        "apexPMD.priorityErrorThreshold": "1",
+    
+        // Determines at what priority level 'warnings' will be added. Anything less will be a hint
+        "apexPMD.priorityWarnThreshold": "3"
+
+}

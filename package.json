@@ -131,5 +131,8 @@
         "mocha": "^2.3.3",
         "@types/node": "^6.0.40",
         "@types/mocha": "^2.2.32"
+    },
+    "dependencies": {
+        "csv-parse": "^2.0.0"
     }
 }

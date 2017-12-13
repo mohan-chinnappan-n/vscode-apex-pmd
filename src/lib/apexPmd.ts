@@ -3,12 +3,15 @@ import * as ChildProcess from 'child_process'
 import * as fs from 'fs';
 import * as path from 'path';
 
+let parseSync  =  require('csv-parse/lib/sync');
+
 export class ApexPmd{
     private _pmdPath: string;
     private _rulesetPath: string;
     private _errorThreshold: number;
     private _warningThreshold: number;
     private _outputChannel: vscode.OutputChannel;
+    private _outputCols;
 
     public constructor(outputChannel: vscode.OutputChannel, pmdPath: string, defaultRuleset: string, errorThreshold: number, warningThreshold: number){
         this._rulesetPath = defaultRuleset;
@@ -16,6 +19,13 @@ export class ApexPmd{
         this._errorThreshold = errorThreshold;
         this._warningThreshold = warningThreshold;
         this._outputChannel = outputChannel;
+
+        this._outputCols = '"Problem","Package","File","Priority","Line","Description","Ruleset","Rule"'
+        .replace(/"/g, "")
+        .split(',')
+        .map((item) => {
+            return item.toLowerCase()
+        })
     }
 
     public run(targetPath: string, collection: vscode.DiagnosticCollection){
@@ -71,26 +81,58 @@ export class ApexPmd{
         });
     }
 
+   
+   // util method to parse the given CSV line and provide object
+    parseCSVLine(line: String) {
+          //format: "Problem","Package","File","Priority","Line","Description","Ruleset","Rule"
+          //console.log(this._outputCols);
+          // parse the csv line
+          let records = parseSync(line, {columns: this._outputCols} );
+          if (records != null && records.length > 0) {
+                let item = records[0];
+                let pcl = {
+                    lineNum: parseInt(item.line) - 1,
+                    msg: item.description.replace(/[ ]+/g," "),
+                    priority: parseInt(item.priority),
+
+                    file: item.file,
+                    package: item.package,
+                    ruleset: item.ruleset,
+                    rule:item.rule
+
+                }
+                console.log('PCL', pcl);
+                return pcl;
+          }
+          return null;
+     
+        
+        
+    }
+
     createDiagonistic(line: String): vscode.Diagnostic{
-        //format: "Problem","Package","File","Priority","Line","Description","Ruleset","Rule"
-        let parts = line.split(',');
-        let lineNum = parseInt(this.stripQuotes(parts[4])) - 1;
-        let msg = this.stripQuotes(parts[5]);
-        let priority = parseInt(this.stripQuotes(parts[3]));
-        if(isNaN(lineNum)){return null;}
+        //console.log(`LINE: ${line}`);
+
+        let pcl = this.parseCSVLine(line);
+        //console.log(`lineNum: ${pcl.lineNum}\nmsg: ${pcl.msg}\n priority: ${pcl.priority}`)
+        // ignore if lineNum is not a number
+        if(isNaN(pcl.lineNum)){return null;}
 
         let level: vscode.DiagnosticSeverity;
-        if(priority <= this._errorThreshold){
+
+        if(pcl.priority <= this._errorThreshold){
             level = vscode.DiagnosticSeverity.Error;
-        }else if(priority <= this._warningThreshold){
+        }else if(pcl.priority <= this._warningThreshold){
             level = vscode.DiagnosticSeverity.Warning;
         }else{
             level = vscode.DiagnosticSeverity.Hint;
         }
 
         let problem = new vscode.Diagnostic(
-            new vscode.Range(new vscode.Position(lineNum,0),new vscode.Position(lineNum,100)),
-            msg,
+            new vscode.Range(new vscode.Position(pcl.lineNum,0)
+                            ,new vscode.Position(pcl.lineNum,100)
+            ),
+            pcl.msg,
             level
         );
         return problem;
@@ -101,8 +143,10 @@ export class ApexPmd{
         return this.stripQuotes(parts[2]);
     }
 
-    createPMDCommand(targetPath: String) : string{
-        return `java -cp "${path.join(this._pmdPath,'lib','*')}" net.sourceforge.pmd.PMD -d "${targetPath}" -f csv -R "${this._rulesetPath}"`;
+    createPMDCommand(targetPath: String) : string {
+        let cmd = `java -cp "${path.join(this._pmdPath,'lib','*')}" net.sourceforge.pmd.PMD -d "${targetPath}" -f csv -R "${this._rulesetPath}"`;
+        console.log(`CMD: ${cmd}`)
+        return cmd;
     }
 
     checkPmdPath(): boolean{
@@ -116,6 +160,7 @@ export class ApexPmd{
 
     checkRulesetPath(): boolean{
         if(this.fileExists(this._rulesetPath)){
+            console.log(`Ruleset Path: ${this._rulesetPath}`)
             return true;
         }
         vscode.window.showErrorMessage(`No Ruleset not found at ${this._rulesetPath}. Ensure configuration correct or change back to the default.`);
@@ -145,6 +190,7 @@ export class ApexPmd{
         return s.substr(1, s.length-2);
     }
 }
+
 
 
 
