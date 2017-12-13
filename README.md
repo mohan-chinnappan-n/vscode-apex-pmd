@@ -1,4 +1,4 @@
-# apex-pmd
+# VSCode Extension for apex-pmd
 
 Allows you to run [Apex Static Code Analysis](http://pmd.sourceforge.net/snapshot/pmd-apex/) directly in vscode.
 
