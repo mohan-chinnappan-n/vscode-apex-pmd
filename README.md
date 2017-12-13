@@ -5,6 +5,10 @@ Allows you to run [Apex Static Code Analysis](http://pmd.sourceforge.net/snapsho
 
 This based on the original work by [Chuck Jonas](https://github.com/ChuckJonas/vscode-apex-pmd)
 
+## ANT task based PMD
+
+If you are looking for ANT task based PMD for Apex, [here](https://github.com/mohan-chinnappan-n/pmd-dist) it is.
+
 ## Features Demo
 
 ![Demo for the Extension](./images/code-scan-vscode-5.gif)
