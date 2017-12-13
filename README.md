@@ -1,11 +1,13 @@
 # apex-pmd
 
-Allows you to run [Apex Static Analysis](http://pmd.sourceforge.net/snapshot/pmd-apex/) directly in vscode.
+Allows you to run [Apex Static Code Analysis](http://pmd.sourceforge.net/snapshot/pmd-apex/) directly in vscode.
 
 
 This based on the original work by [Chuck Jonas](https://github.com/ChuckJonas/vscode-apex-pmd)
-## Features
 
+## Features Demo
+
+![Demo for the Extension](./images/code-scan-vscode-5.gif)
 
 ### Current actions Supported
 
@@ -22,14 +24,12 @@ This based on the original work by [Chuck Jonas](https://github.com/ChuckJonas/v
 3. unzip to location of choice
 4. In VScode, Open `Preferences: User Settings` and set `apexPMD.pmdPath` to folder where pmd was unzipped in step 3
 
-## Configuration
+## Sample Configuration
 
 ``` javascript
 
 {
-    "vim.disableAnnoyingNeovimMessage": true,
-    "workbench.colorTheme": "Visual Studio Dark",
-    "window.zoomLevel": 1,
+     // ...
 
     // absolute path to where PMD was installed
     // following example in my case
