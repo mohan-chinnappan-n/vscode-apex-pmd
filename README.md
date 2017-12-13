@@ -2,9 +2,10 @@
 
 Allows you to run [Apex Static Analysis](http://pmd.sourceforge.net/snapshot/pmd-apex/) directly in vscode.
 
+
+This based on the original work by [Chuck Jonas](https://github.com/ChuckJonas/vscode-apex-pmd)
 ## Features
 
-![Apex PMD](https://raw.githubusercontent.com/ChuckJonas/vscode-apex-pmd/master/images/apex-pmd.gif)
 
 ### Current actions Supported
 
@@ -24,15 +25,21 @@ Allows you to run [Apex Static Analysis](http://pmd.sourceforge.net/snapshot/pmd
 ## Configuration
 
 ``` javascript
+
+{
+    "vim.disableAnnoyingNeovimMessage": true,
+    "workbench.colorTheme": "Visual Studio Dark",
+    "window.zoomLevel": 1,
+
     // absolute path to where PMD was installed
-    "apexPMD.pmdPath": "/Users/johndoe/pmd",
-
+    // following example in my case
+    "apexPMD.pmdPath":"/Users/mchinnappan/code-scan-tools/pmd/pmd-bin-5.8.1",
     // Set to false to use you own ruleset (set path)
-    "apexPMD.useDefaultRuleset": "true",
+     "apexPMD.useDefaultRuleset": "true",
 
-    // Absolute path to ruleset xml file.  Must also set `useDefaultRuleset:false`.
+     // Absolute path to ruleset xml file.  Must also set `useDefaultRuleset:false`.
     "apexPMD.rulesetPath": "",
-
+    
     // Will run static analysis every time a file is opened
     "apexPMD.runOnFileOpen": "true",
 
@@ -44,12 +51,11 @@ Allows you to run [Apex Static Analysis](http://pmd.sourceforge.net/snapshot/pmd
 
     // Determines at what priority level 'warnings' will be added. Anything less will be a hint
     "apexPMD.priorityWarnThreshold": "3"
+
+}
+
+
 ```
 
 ## Defining your own "Ruleset"
-
-I recommend you use the [default ruleset](https://github.com/ChuckJonas/vscode-apex-pmd/blob/master/rulesets/apex_ruleset.xml) as a starting point.
-
-Set `"apexPMD.useDefaultRuleset": "false"` and update `apexPMD.rulesetPath` to reference your custom ruleset.
-
-[Apex Ruleset Reference](http://pmd.sourceforge.net/snapshot/pmd-apex/rules/index.html#Default_ruleset_used_by_the_CodeClimate_Engine_for_Salesforce.com_Apex)
+Here is the [sample](./rulesets/apex_ruleset.xml) used in this extension
