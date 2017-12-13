@@ -57,5 +57,5 @@ This based on the original work by [Chuck Jonas](https://github.com/ChuckJonas/v
 
 ```
 
-## Defining your own "Ruleset"
+## Ruleset
 Here is the [sample](./rulesets/apex_ruleset.xml) used in this extension
