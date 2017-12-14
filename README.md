@@ -1,9 +1,9 @@
-# VSCode Extension for apex-pmd
+# VSCode Extension for PMD code scan for Salesforce Apex
 
 Allows you to run [Apex Static Code Analysis](http://pmd.sourceforge.net/snapshot/pmd-apex/) directly in vscode.
 
 
-This based on the original work by [Chuck Jonas](https://github.com/ChuckJonas/vscode-apex-pmd)
+This is based on the original work by [Chuck Jonas](https://github.com/ChuckJonas/vscode-apex-pmd)
 
 ## ANT task based PMD
 
