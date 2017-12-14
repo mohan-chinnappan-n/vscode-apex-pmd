@@ -28,7 +28,7 @@ If you are looking for ANT task based PMD for Apex, [here](https://github.com/mo
 3. unzip the zip file from step #2 to location of choice and make a note of that location. This is the value for : `apexPMD.pmdPath`
 4. In VSCode, Open `Preferences: User Settings` and set `apexPMD.pmdPath` to folder where pmd was unzipped in step 3 along with other config items as shown below:
 
-## Sample Configuration
+## Sample Configuration ->  VSCode::Preferences: User Settings
 
 ``` javascript
 
