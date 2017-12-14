@@ -25,7 +25,7 @@ If you are looking for ANT task based PMD for Apex, [here](https://github.com/mo
 
 1. Must have `JDK >=1.4` installed and in path
 2. Download a [PMD "bin" release](https://sourceforge.net/projects/pmd/files/pmd/) (`>= 5.6`)
-3. unzip the zip file from step #2 to location of choice and make a note of that location. This is the value `apexPMD.pmdPath`
+3. unzip the zip file from step #2 to location of choice and make a note of that location. This is the value for : `apexPMD.pmdPath`
 4. In VSCode, Open `Preferences: User Settings` and set `apexPMD.pmdPath` to folder where pmd was unzipped in step 3 along with other config items as shown below:
 
 ## Sample Configuration
