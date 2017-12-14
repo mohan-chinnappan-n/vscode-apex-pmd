@@ -62,4 +62,4 @@ If you are looking for ANT task based PMD for Apex, [here](https://github.com/mo
 ```
 
 ## Ruleset
-Here is the [sample](./rulesets/apex_ruleset.xml) used in this extension
+Here is the [sample ruleset](./rulesets/apex_ruleset.xml) used in this extension
