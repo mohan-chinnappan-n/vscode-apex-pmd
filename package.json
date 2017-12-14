@@ -1,12 +1,12 @@
 {
-    "name": "apex-pmd",
-    "displayName": "Apex PMD",
-    "description": "PMD static analysis for Salesforce Apex",
-    "version": "0.0.21",
-    "publisher": "chuckjonas",
+    "name": "apex-pmd-code-scanner",
+    "displayName": "VSCode Apex PMD",
+    "description": "PMD static code analysis for Salesforce Apex",
+    "version": "0.0.40",
+    "publisher": "mohanchinnappan",
     "author": {
-        "name": "Charlie Jonas",
-        "email": "charlie@callawaycloudconsulting.com"
+        "name": "Mohan Chinnappan",
+        "email": "mohan.chinnappan.n@gmail.com"
     },
     "engines": {
         "vscode": "^1.5.0",
@@ -14,19 +14,19 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/ChuckJonas/vscode-apex-pmd.git"
+        "url": "https://github.com/mohan-chinnappan-n/vscode-apex-pmd.git"
     },
     "bugs": {
-        "url": "https://github.com/ChuckJonas/vscode-apex-pmd/issues"
+        "url": "https://github.com/mohan-chinnappan-n/vscode-apex-pmd.git/issues"
     },
-    "icon": "images/apex-pmd-icon.png",
+    "icon": "images/logo-512.png",
     "categories": [
         "Linters"
     ],
     "keywords": [
         "Salesforce",
         "Apex",
-        "Static Analysis",
+        "Static Code Analysis",
         "PMD"
     ],
     "activationEvents": [
@@ -69,7 +69,7 @@
             "properties": {
                 "apexPMD.pmdPath": {
                     "type": "string",
-                    "default": "/Users/johndoe/pmd",
+                    "default": "/Users/username/pmd",
                     "description": "absolute path to where PMD was installed"
                 },
                 "apexPMD.useDefaultRuleset": {
