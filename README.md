@@ -1,5 +1,5 @@
-![logo](images/logo-128.png)
-# VSCode Extension for PMD code scan for Salesforce Apex
+
+# ![logo](images/logo-128.png) VSCode Extension for PMD code scan for Salesforce Apex
 
 Allows you to run [Apex Static Code Analysis](http://pmd.sourceforge.net/snapshot/pmd-apex/) directly in VSCode.
 
