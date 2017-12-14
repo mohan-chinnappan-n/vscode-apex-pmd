@@ -19,7 +19,7 @@
     "bugs": {
         "url": "https://github.com/mohan-chinnappan-n/vscode-apex-pmd.git/issues"
     },
-    "icon": "images/logo-512.png",
+    "icon": "images/logo-128.png",
     "categories": [
         "Linters"
     ],
