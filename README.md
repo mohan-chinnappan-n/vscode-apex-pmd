@@ -19,7 +19,7 @@ If you are looking for ANT task based PMD for Apex, [here](https://github.com/mo
 * Run analysis on file save
 * Run analysis on entire workspace
 * Run analysis on single file
-* Ability to define your own ruleset
+ 
 
 ## Installation
 
