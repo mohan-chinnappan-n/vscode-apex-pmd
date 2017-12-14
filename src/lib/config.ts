@@ -10,6 +10,8 @@ export class Config{
     public runOnFileOpen: boolean;
     public runOnFileSave: boolean;
 
+     
+
     public constructor(){
         let config = vscode.workspace.getConfiguration('apexPMD');
         this.useDefaultRuleset = config.get('useDefaultRuleset') as boolean;
@@ -19,5 +21,7 @@ export class Config{
         this.priorityWarnThreshold = config.get('priorityWarnThreshold') as number;
         this.runOnFileOpen = config.get('runOnFileOpen') as boolean;
         this.runOnFileSave = config.get('runOnFileSave') as boolean;
+
+        
     }
 }

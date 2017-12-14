@@ -13,6 +13,9 @@ export class ApexPmd{
     private _outputChannel: vscode.OutputChannel;
     private _outputCols;
 
+    private _statusBarItem: vscode.StatusBarItem;
+
+
     public constructor(outputChannel: vscode.OutputChannel, pmdPath: string, defaultRuleset: string, errorThreshold: number, warningThreshold: number){
         this._rulesetPath = defaultRuleset;
         this._pmdPath = pmdPath;
@@ -23,9 +26,34 @@ export class ApexPmd{
         this._outputCols = '"Problem","Package","File","Priority","Line","Description","Ruleset","Rule"'
         .replace(/"/g, "")
         .split(',')
-        .map((item) => {
-            return item.toLowerCase()
-        })
+        .map( x =>  x.toLowerCase() )
+        
+         // Create statusbarItem as needed
+         if (!this._statusBarItem) {
+            this._statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left);
+        }
+        // Get the current text editor
+        let editor = vscode.window.activeTextEditor;
+        // no editor? hide statusBarItem
+        if (!editor) {
+            this._statusBarItem.hide();
+            return;
+        }
+
+
+    }
+
+
+   // update the statusbar with the issues count
+    public updateStatusBarItem(count: number) {
+        if (count > 0) {
+            // Update the status bar
+            this._statusBarItem.text = count !== 1 ? `$(stop) ${count} ISSUES` : '$(stop) 1 ISSUE';
+            this._statusBarItem.show();
+        } else {
+            this._statusBarItem.hide();
+        }
+
     }
 
     public run(targetPath: string, collection: vscode.DiagnosticCollection){
@@ -38,8 +66,13 @@ export class ApexPmd{
             this._outputChannel.appendLine('error:' +  error);
             this._outputChannel.appendLine('stdout:' +  stdout);
             this._outputChannel.appendLine('stderr:' +  stderr);
+            //console.log(`STDOUT: ${stdout.split('\n').length}`)
 
-            let lines = stdout.split('\n');
+            let lines = stdout.split('\n').filter(x => x.trim().length > 0);
+           
+            //console.log(lines.length)
+            this.updateStatusBarItem(lines.length-1);
+
             let problemsMap = new Map<string,Array<vscode.Diagnostic>>();
             for(let i = 0; i < lines.length; i++){
                 try{
@@ -57,6 +90,10 @@ export class ApexPmd{
                     this._outputChannel.appendLine(ex);
                 }
             }
+
+            
+
+
             problemsMap.forEach(function(value, key){
                 let uri = vscode.Uri.file(key);
                 vscode.workspace.openTextDocument(uri).then(doc => {
@@ -101,7 +138,7 @@ export class ApexPmd{
                     rule:item.rule
 
                 }
-                console.log('PCL', pcl);
+                //console.log('PCL', pcl);
                 return pcl;
           }
           return null;

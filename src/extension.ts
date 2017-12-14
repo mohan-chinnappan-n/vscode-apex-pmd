@@ -26,7 +26,7 @@ export function activate(context: vscode.ExtensionContext) {
 
     const pmd = new ApexPmd(outputchannel, config.pmdPath, config.rulesetPath, config.priorityErrorThreshold, config.priorityWarnThreshold);
 
-    //setup commands
+    //setup commands - register commands
     context.subscriptions.push(
         vscode.commands.registerCommand('apex-pmd.runWorkspace', () => {
             pmd.run(vscode.workspace.rootPath, collection);
@@ -43,21 +43,25 @@ export function activate(context: vscode.ExtensionContext) {
     );
 
     //setup listeners
-    if(config.runOnFileOpen){
+    if(config.runOnFileSave){
         vscode.workspace.onDidSaveTextDocument((textDocument) => {
             if(textDocument.languageId == 'apex'){
                 return vscode.commands.executeCommand('apex-pmd.runFile', textDocument.fileName);
             }
         });
     }
+     
 
-    if(config.runOnFileSave){
+    if(config.runOnFileOpen){
         vscode.workspace.onDidOpenTextDocument((textDocument) => {
             if(textDocument.languageId == 'apex'){
                 return vscode.commands.executeCommand('apex-pmd.runFile', textDocument.fileName);
             }
         });
     }
+
+  
+ 
 
     vscode.workspace.onDidCloseTextDocument((textDocument) => {
         collection.delete(textDocument.uri);
