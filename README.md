@@ -1,6 +1,6 @@
 # VSCode Extension for PMD code scan for Salesforce Apex
 
-Allows you to run [Apex Static Code Analysis](http://pmd.sourceforge.net/snapshot/pmd-apex/) directly in vscode.
+Allows you to run [Apex Static Code Analysis](http://pmd.sourceforge.net/snapshot/pmd-apex/) directly in VSCode.
 
 
 This is based on the original work by [Chuck Jonas](https://github.com/ChuckJonas/vscode-apex-pmd)
@@ -25,8 +25,8 @@ If you are looking for ANT task based PMD for Apex, [here](https://github.com/mo
 
 1. Must have `JDK >=1.4` installed and in path
 2. Download a [PMD "bin" release](https://sourceforge.net/projects/pmd/files/pmd/) (`>= 5.6`)
-3. unzip to location of choice
-4. In VScode, Open `Preferences: User Settings` and set `apexPMD.pmdPath` to folder where pmd was unzipped in step 3
+3. unzip the zip file from step #2 to location of choice and make a note of that location. This is the value `apexPMD.pmdPath`
+4. In VSCode, Open `Preferences: User Settings` and set `apexPMD.pmdPath` to folder where pmd was unzipped in step 3 along with other config items as shown below:
 
 ## Sample Configuration
 
