@@ -11,7 +11,7 @@ If you are looking for ANT task based PMD for Apex, [here](https://github.com/mo
 
 ## Features Demo
 
-![Demo for the Extension](./images/code-scan-vscode-5.gif)
+![Demo for the Extension](./images/code-scan-vscode-6.gif)
 
 ### Current actions Supported
 
