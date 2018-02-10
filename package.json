@@ -1,9 +1,9 @@
 {
     "name": "apex-pmd-code-scanner",
     "displayName": "VSCode Apex PMD",
-    "description": "PMD static code analysis for Salesforce Apex",
+    "description": "PMD static code analysis for Salesforce Apex. This is based on the original work by Chuck Jonas",
     "version": "0.0.40",
-    "publisher": "mohanchinnappan",
+    "publisher": "mohanChinnappan",
     "author": {
         "name": "Mohan Chinnappan",
         "email": "mohan.chinnappan.n@gmail.com"

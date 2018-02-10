@@ -66,3 +66,6 @@ Run analysis on:
 
 ## Ruleset
 Here is the [sample ruleset](./rulesets/apex_ruleset.xml) used in this extension
+
+## From Visual Studio MarketPlace
+[Install it from Visual Studio MarketPlace](https://marketplace.visualstudio.com/items?itemName=mohanChinnappan.apex-pmd-code-scanner#overview)
