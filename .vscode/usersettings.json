@@ -9,7 +9,8 @@
     // Set to false to use you own ruleset (set path)
      "apexPMD.useDefaultRuleset": "true",
 
-     // Absolute path to ruleset xml file.  Must also set `useDefaultRuleset:false`.
+    // Path to ruleset xml file.  Must also set `useDefaultRuleset:false`.
+    // If relative, uses currently open directory as a starting point
     "apexPMD.rulesetPath": "",
     
         // Will run static analysis every time a file is opened
